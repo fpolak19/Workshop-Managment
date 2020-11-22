@@ -11,17 +11,32 @@ public class Vehicles {
     private String model;
     private String reg;
     private String notes;
+    @ManyToOne
+    private Customer customer;
 
-    public Vehicles(Long id, String brand, String model, String reg, String notes) {
+    public Vehicles(Long id, String brand, String model, String reg, String notes, Customer customer) {
         this.id = id;
         this.brand = brand;
         this.model = model;
         this.reg = reg;
         this.notes = notes;
+        this.customer = customer;
     }
+    public String  customerId(){
+        return customer.getFullName();
+    }
+
 
     public Vehicles() {
 
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public String getNotes() {
@@ -72,6 +87,7 @@ public class Vehicles {
                 ", model='" + model + '\'' +
                 ", reg='" + reg + '\'' +
                 ", notes='" + notes + '\'' +
+                ", customer=" + customer +
                 '}';
     }
 }
