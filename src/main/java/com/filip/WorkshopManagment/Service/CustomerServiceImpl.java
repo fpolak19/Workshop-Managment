@@ -21,6 +21,8 @@ public class CustomerServiceImpl implements  CustomerService{
     public List<Customer> listAll() {
         List<Customer> customer = new ArrayList<>();
         customerRepository.findAll().forEach(customer::add);
+        customerRepository.findAll().toString();
+
         return customer;
     }
 

@@ -447,6 +447,14 @@
                                           <textarea class="form-control " type="notes" th:field="*{notes}"  ></textarea>
                                       </div>
                                   </div>
+                                  <div class="form-group ">
+                                      <label  class="control-label col-lg-2">Customer List</label>
+                                      <div class="col-lg-10">
+                                          <select th:field="*{customer}">
+                                          <option th:each="p : ${customerNameList}" th:value="${p}" th:text="${p}" />
+                                          </select>
+                                      </div>
+                                  </div>
                                   <div class="form-group">
                                       <div class="col-lg-offset-2 col-lg-10">
                                           <button class="btn btn-primary" type="submit">Save</button>

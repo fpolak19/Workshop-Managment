@@ -8,6 +8,7 @@ public class WorkshopManagmentApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WorkshopManagmentApplication.class, args);
+
 	}
 
 }
