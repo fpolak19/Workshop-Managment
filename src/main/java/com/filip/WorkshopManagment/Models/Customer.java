@@ -1,7 +1,9 @@
 package com.filip.WorkshopManagment.Models;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Customer {
@@ -13,28 +15,17 @@ public class Customer {
     private String mobile;
     private String email;
     private String notes;
-    @OneToMany
-    private List<Vehicles> vehicles;
 
-    public Customer(Long id, String fullName, String address, String mobile, String email, String notes, List vehicles) {
+    public Customer(Long id, String fullName, String address, String mobile, String email, String notes) {
         this.id = id;
         this.fullName = fullName;
         this.address = address;
         this.mobile = mobile;
         this.email = email;
         this.notes = notes;
-        this.vehicles= vehicles;
 
     }
     public Customer() {
-    }
-
-    public List<Vehicles> getVehicles() {
-        return vehicles;
-    }
-
-    public void setVehicles(List<Vehicles> vehicles) {
-        this.vehicles = vehicles;
     }
 
     public Long getId() {
@@ -95,7 +86,7 @@ public class Customer {
                 ", mobile='" + mobile + '\'' +
                 ", email='" + email + '\'' +
                 ", notes='" + notes + '\'' +
-                ", vehicles=" + vehicles +
+
                 '}';
     }
 }

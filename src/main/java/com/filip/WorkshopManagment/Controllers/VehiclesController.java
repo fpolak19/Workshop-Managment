@@ -10,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class VehiclesController {
@@ -34,17 +34,38 @@ public class VehiclesController {
         return "vehiclelist";
     }
    @GetMapping("/newvehicleform.html")
-    public String formVehicle(Model model) {
+    public String formVehicle( Long id , Model model) {
        Vehicles vehicles = new Vehicles();
        model.addAttribute("vehicles", vehicles);
-       List<Customer> customer = (List<Customer>) customerService.listAll();
-       model.addAttribute("customerNameList" ,customer );
+      Iterable<Customer> customer = customerRepository.findAll();
+
+       model.addAttribute("customerNameList" , customer );
         return "newvehicleform";
     }
     @PostMapping ("/newvehicleform.html")
     public String save( Vehicles vehicles) {
         vehicleRepository.save(vehicles);
-        return "vehiclelist.html";
+        return "redirect:/vehiclelist.html";
+    }
+    @RequestMapping("/vehicles/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        vehicleService.delete(Long.valueOf(id));
+        return "redirect:/vehiclelist.html";
+    }
+    @GetMapping("/newvehicleform2.html/{id}")
+    public String form2Vehicle( @PathVariable("id") Long id , Model model) {
+        Vehicles vehicles = new Vehicles();
+        model.addAttribute("vehicles", vehicles);
+        Customer customer = customerService.getById(id);
+
+        model.addAttribute("customerId", customer);
+        return "newvehicleform2";
+    }
+    @PostMapping ("/newvehicleform2.html/{id}")
+    public String save2( Vehicles vehicles) {
+        vehicleService.saveOrUpdate(vehicles);
+
+        return "redirect:/vehiclelist.html";
     }
 
 

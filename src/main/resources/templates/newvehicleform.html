@@ -451,7 +451,7 @@
                                       <label  class="control-label col-lg-2">Customer List</label>
                                       <div class="col-lg-10">
                                           <select th:field="*{customer}">
-                                          <option th:each="p : ${customerNameList}" th:value="${p}" th:text="${p}" />
+                                          <option th:each="c : ${customerNameList}" th:value="${c}" th:text="${c}" />
                                           </select>
                                       </div>
                                   </div>
