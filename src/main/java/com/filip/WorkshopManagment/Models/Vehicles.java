@@ -11,7 +11,7 @@ public class Vehicles {
     private String model;
     private String reg;
     private String notes;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Customer customer;
 
     public Vehicles(Long id, String brand, String model, String reg, String notes, Customer customer) {
@@ -22,8 +22,12 @@ public class Vehicles {
         this.notes = notes;
         this.customer = customer;
     }
-    public String  customerId(){
+    public String  customerFullName(){
         return customer.getFullName();
+    }
+    public Customer customerId(){
+        customer.getId();
+        return new Customer();
     }
 
 
@@ -32,6 +36,9 @@ public class Vehicles {
     }
 
     public Customer getCustomer() {
+        if(customer!= null) {
+            customer.getId();
+        }
         return customer;
     }
 
