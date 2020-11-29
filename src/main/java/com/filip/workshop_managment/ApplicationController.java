@@ -1,7 +1,7 @@
-package com.filip.WorkshopManagment;
+package com.filip.workshop_managment;
 
-import com.filip.WorkshopManagment.Reopsitory.CustomerRepository;
-import com.filip.WorkshopManagment.Service.CustomerService;
+import com.filip.workshop_managment.reopsitory.CustomerRepository;
+import com.filip.workshop_managment.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +21,7 @@ public class ApplicationController {
         return "index";
 
     }
-    @GetMapping("/login.html")
+    @GetMapping("/login")
     public String login() {
         return "login";
     }
@@ -75,6 +75,10 @@ public class ApplicationController {
     @GetMapping("/buttons.html")
     public String buttons() {
         return "buttons";
+    }
+    @GetMapping("/new_vehicle_form2.html/index.html")
+    public String vehicleFromIndex(){
+    return "redirect:/index.html";
     }
 
 

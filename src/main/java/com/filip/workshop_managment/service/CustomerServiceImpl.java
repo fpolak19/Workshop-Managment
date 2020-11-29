@@ -1,7 +1,7 @@
-package com.filip.WorkshopManagment.Service;
+package com.filip.workshop_managment.service;
 
-import com.filip.WorkshopManagment.Models.Customer;
-import com.filip.WorkshopManagment.Reopsitory.CustomerRepository;
+import com.filip.workshop_managment.models.Customer;
+import com.filip.workshop_managment.reopsitory.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

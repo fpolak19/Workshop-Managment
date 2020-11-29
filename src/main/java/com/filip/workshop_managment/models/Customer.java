@@ -1,11 +1,11 @@
-package com.filip.WorkshopManagment.Models;
+package com.filip.workshop_managment.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
+@Entity(name="customer")
+@Table(name="customer")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +15,8 @@ public class Customer {
     private String mobile;
     private String email;
     private String notes;
-
+    @OneToMany(mappedBy = "customer")
+    private  List<Vehicle> vehicle = new ArrayList<Vehicle>();
     public Customer(Long id, String fullName, String address, String mobile, String email, String notes) {
         this.id = id;
         this.fullName = fullName;

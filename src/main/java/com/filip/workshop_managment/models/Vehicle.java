@@ -1,9 +1,9 @@
-package com.filip.WorkshopManagment.Models;
+package com.filip.workshop_managment.models;
 
 import javax.persistence.*;
 
 @Entity
-public class Vehicles {
+public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -11,10 +11,10 @@ public class Vehicles {
     private String model;
     private String reg;
     private String notes;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Customer customer;
 
-    public Vehicles(Long id, String brand, String model, String reg, String notes, Customer customer) {
+    public Vehicle(Long id, String brand, String model, String reg, String notes, Customer customer) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -25,20 +25,14 @@ public class Vehicles {
     public String  customerFullName(){
         return customer.getFullName();
     }
-    public Customer customerId(){
-        customer.getId();
-        return new Customer();
-    }
 
 
-    public Vehicles() {
+
+    public Vehicle() {
 
     }
 
     public Customer getCustomer() {
-        if(customer!= null) {
-            customer.getId();
-        }
         return customer;
     }
 

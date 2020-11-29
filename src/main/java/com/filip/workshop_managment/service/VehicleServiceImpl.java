@@ -1,7 +1,7 @@
-package com.filip.WorkshopManagment.Service;
+package com.filip.workshop_managment.service;
 
-import com.filip.WorkshopManagment.Models.Vehicles;
-import com.filip.WorkshopManagment.Reopsitory.VehicleRepository;
+import com.filip.workshop_managment.models.Vehicle;
+import com.filip.workshop_managment.reopsitory.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,21 +18,21 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public List<Vehicles> listAll() {
-        List<Vehicles> vehicles = new ArrayList<>();
+    public List<Vehicle> listAll() {
+        List<Vehicle> vehicles = new ArrayList<>();
        vehicleRepository.findAll().forEach(vehicles::add);
         return vehicles;
     }
 
     @Override
-    public Vehicles getById(Long id) {
+    public Vehicle getById(Long id) {
         return vehicleRepository.findById(id).orElse(null);
 
     }
 
     @Override
-    public Vehicles saveOrUpdate(Vehicles vehicles) {
-        vehicleRepository.save(vehicles);
+    public Vehicle saveOrUpdate(Vehicle vehicle) {
+        vehicleRepository.save(vehicle);
         return null;
     }
 

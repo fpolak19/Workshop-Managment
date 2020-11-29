@@ -1,6 +1,6 @@
-package com.filip.WorkshopManagment.Service;
+package com.filip.workshop_managment.service;
 
-import com.filip.WorkshopManagment.Models.Customer;
+import com.filip.workshop_managment.models.Customer;
 
 import java.util.List;
 

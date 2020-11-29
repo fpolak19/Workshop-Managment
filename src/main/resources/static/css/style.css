@@ -10,7 +10,10 @@
 
 @import url(line-icons.css);
 
-
+.fab{
+    color: gray;
+    font-size: 80px
+    }
 
 body {
 
