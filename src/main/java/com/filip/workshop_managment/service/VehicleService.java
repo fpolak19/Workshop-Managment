@@ -13,5 +13,7 @@ public interface VehicleService {
 
     void delete(Long id);
 
+    void update(Long id, Vehicle vehicle);
+
 
 }

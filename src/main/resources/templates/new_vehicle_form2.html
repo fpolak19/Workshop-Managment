@@ -328,7 +328,7 @@
                         </a>
                         <ul class="sub">
 
-                            <li><a class="" href="newvehicleform.html">New Vehicle Form </a></li>
+                            <li><a class="" href="new_vehicle_form.html">New Vehicle Form </a></li>
                             <li><a class="" href="form_component.html">Form Elements</a></li>
                             <li><a class="" href="form_validation.html">Form Validation</a></li>
                         </ul>
@@ -340,8 +340,8 @@
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="customerlist.html">Customer</a></li>
-                            <li><a class="" href="newcustomerform.html">New Customer Form </a></li>
+                            <li><a class="" href="customer_list.html">Customer</a></li>
+                            <li><a class="" href="new_customer_form.html">New Customer Form </a></li>
                             <li><a class="" href="buttons.html">Buttons</a></li>
                             <li><a class="" href="grids.html">Grids</a></li>
                         </ul>
@@ -354,8 +354,8 @@
                         </a>
                         <ul class="sub">
                             <li>
-                                <a class="" href="vehiclelist.html">Vehicles</a>
-                            <li><a class="" href="newvehicleform.html">New Vehicle Form </a></li>
+                                <a class="" href="vehicle_list.html">Vehicles</a>
+                            <li><a class="" href="new_vehicle_form.html">New Vehicle Form </a></li>
 
                             </li>
 
@@ -424,8 +424,13 @@
                       </header>
                       <div class="panel-body">
                           <div class="form">
-                              <form class="form-validate form-horizontal"  method="post" th:action="@{/new_vehicle_form2.html/{id}}" th:object="${vehicle}">
-
+                              <form class="form-validate form-horizontal"  method="post" th:action="@{/new_vehicle_form2.html/edit/{id}}" th:object="${vehicle}">
+                                  <div class="form-group ">
+                                      <label  class="control-label col-lg-2">Id</label>
+                                      <div class="col-lg-10">
+                                          <input class="form-control"   type="text" th:field="*{id}" />
+                                      </div>
+                                  </div>
                                   <div class="form-group ">
                                       <label  class="control-label col-lg-2">Brand <span class="required">*</span></label>
                                       <div class="col-lg-10">
@@ -453,28 +458,20 @@
                                       </div>
                                   </div>
                                   <div class="form-group ">
-                                      <label  class="control-label col-lg-2">Customer Id</label>
-                                      <div class="col-lg-10"  >
+                                      <label  class="control-label col-lg-2">Customer Number</label>
+                                      <div class="col-lg-10">
+
                                           <datalist id="customer"  >
 
-                                              <option th:each="c : ${customerId}" th:value="${c.id}" th:text="${c.id }" />
+                                              <option th:each="c : ${customerNameList}" th:value="${c.id}" th:text="${c.id }" />
                                           </datalist>
-                                          <input class="form-control" placeholder=" Please type in customer number from list below" list="customer"  type="text"  th:field="${vehicle.customer}"/>
+                                          <input class="form-control" placeholder=" Please type in customer number from list below" list="customer"  type="text" th:field="*{customer}" />
 
-                                          <option th:each="c : ${customerId}" th:value="${c.id }" th:text="${c.id }" />
-
-                                      </div>
-
-                                  </div>
-                                  <div class="form-group ">
-                                      <label  class="control-label col-lg-2"></label>
-                                      <div class="col-lg-10" >
-
-                                          <input class="form-control"  type="text" th:object="${getCustomerId}" th:field="*{id}" hidden/>
+                                          <option th:each="c : ${customerNameList}" th:value="${c.id + c.fullName}" th:text="${c.id + ' ' + c.fullName}" />
 
                                       </div>
-
                                   </div>
+
 
                                   <div class="form-group">
                                       <div class="col-lg-offset-2 col-lg-10">

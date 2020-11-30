@@ -80,6 +80,9 @@ public class ApplicationController {
     public String vehicleFromIndex(){
     return "redirect:/index.html";
     }
-
+    @GetMapping("/google_cal")
+    public String googleCal() {
+        return "google_cal";
+    }
 
 }

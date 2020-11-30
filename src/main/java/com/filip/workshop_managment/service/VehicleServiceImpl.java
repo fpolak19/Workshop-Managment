@@ -42,4 +42,15 @@ public class VehicleServiceImpl implements VehicleService {
 
     }
 
+    @Override
+    public void update(Long id, Vehicle vehicle) {
+        List<Vehicle> vehicle1 = new ArrayList<>();
+        for(int i=0; i<vehicle1.size(); i++){
+            Vehicle updateVehicle = vehicle1.get(i);
+            if(updateVehicle.getId().equals(id)){
+                vehicle1.set(i,vehicle);
+                return;
+            }
+        }
+    }
 }

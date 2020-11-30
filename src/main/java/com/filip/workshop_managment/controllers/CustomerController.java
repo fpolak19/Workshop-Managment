@@ -49,6 +49,7 @@ public class CustomerController {
         customerService.delete(id);
         return "redirect:/customer_list.html";
     }
+
     @GetMapping("/new_customer_form/edit/{id}")
     public String edit(@PathVariable Long id, Model model){
 

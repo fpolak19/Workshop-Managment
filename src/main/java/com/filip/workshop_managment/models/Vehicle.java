@@ -3,9 +3,10 @@ package com.filip.workshop_managment.models;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "vehicle")
 public class Vehicle {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String brand;
     private String model;

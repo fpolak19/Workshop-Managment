@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Map;
-
 @Controller
 public class VehiclesController {
     private final VehicleService vehicleService;
@@ -65,16 +63,26 @@ public class VehiclesController {
         Customer customer = customerService.getById(id);
         model.addAttribute("customerId", customer ) ;
 
-        Customer customer1 = customerService.getById(id);
-        model.addAttribute("getCustomerId", customer1 ) ;
         return "new_vehicle_form2";
     }
     @PostMapping("/new_vehicle_form2.html/{id}")
-    public String save2(Vehicle vehicle , Map<String, Object> map) {
+    public String save2(Vehicle vehicle ) {
 
         vehicleRepository.save(vehicle);
         return "redirect:/vehicle_list.html";
     }
+    @GetMapping("/new_vehicle_form2.html/edit/{id}")
+    public String edit(@PathVariable Long id, Model model){
+
+        model.addAttribute("vehicle", vehicleService.getById(id));
+        return "new_vehicle_form2";
+    }
+    @PostMapping("/new_vehicle_form2.html/edit/{id}")
+    public String saveEdit( Vehicle vehicle, Long id){
+        vehicleRepository.save(vehicle);
+        return "redirect:/vehicle_list.html";
+    }
+
 
 
 
